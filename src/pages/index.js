@@ -1,5 +1,6 @@
 import React from 'react';
 import Link from 'gatsby-link';
+import Img from 'gatsby-image';
 
 class IndexPage extends React.Component {
 	render() {
@@ -9,9 +10,12 @@ class IndexPage extends React.Component {
 			<div>
 				{
 					photos.map( photo => {
-						return (
-							<p dangerouslySetInnerHTML={ { __html: photo.node.title } } />
-						)
+						if ( photo.node.featured_media ) {
+							console.log( photo );
+							return (
+								<Img src={ photo.node.featured_media.localFile.childImageSharp.sizes.src } sizes={ photo.node.featured_media.localFile.childImageSharp.sizes } key={ photo.node.id } />
+							)
+						} 
 					} )
 				}
 			</div>
@@ -26,7 +30,18 @@ export const pageQuery = graphql`
 		allWordpressPost( sort: { fields: [ date ], order: DESC } ) {
 			edges {
 				node {
+					id
 					title
+					featured_media {
+           				localFile {
+              				childImageSharp {
+								sizes( maxWidth:500 ) {
+									...GatsbyImageSharpSizes
+
+				                }
+							}
+						}
+					}
 				}
 			}
 		}
