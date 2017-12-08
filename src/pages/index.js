@@ -18,6 +18,7 @@ class IndexPage extends React.Component {
 		const displayPhotos = () => {
 			const photoArray = [];
 			let photoRow = [];
+			let count = 0;
 
 			photos.map( photo => {
 				if ( photo.node.featured_media ) {
@@ -32,9 +33,12 @@ class IndexPage extends React.Component {
 					}
 
 					photoRow.push( photo );
+					count++;
 
 					if ( photoRow.length === 3 ) {
 						return returnRow( photoRow );
+					} else if ( photoArray.length - count === 0 ) {
+						return returnRow( photoRow );	
 					}
 				} )
 			)
@@ -42,7 +46,7 @@ class IndexPage extends React.Component {
 
 		const returnRow = ( photos ) => {
 			return (
-				<PhotoRow photos={ photos } />
+				<PhotoRow photos={ photos } key={ Math.random() } />
 			)
 		}
 

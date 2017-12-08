@@ -6,8 +6,6 @@ import PropTypes from 'prop-types';
 import Photo from './photo';
 
 const PhotoRow = ( props ) => {
-	console.log( 'photo row', props.photos );
-
 	return (
 		<div
 			style={ {
