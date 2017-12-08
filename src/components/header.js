@@ -35,7 +35,7 @@ const Header = ( props ) => {
 			</span>
 			<span
 				style={ {
-					flexBasis: '500px',
+					flexBasis: '600px',
 					flexGrow: 1,
 				} }
 			>

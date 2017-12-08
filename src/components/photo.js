@@ -5,12 +5,18 @@ import Img from 'gatsby-image';
 
 const Photo = ( props ) => {
 	return (
-		<div className="photo">
+		<div
+			style={ {
+				width: 'calc( 100% / 3 )',
+				padding: '0.2em',
+			} }
+		>
 			<Img
 				src={ props.src }
 				sizes={ props.sizes }
 				style={ {
-					width: "300px",
+					width: 'auto',
+					height: 'auto',
 				} }
 			/>
 		</div>

@@ -6,6 +6,7 @@ import Img from 'gatsby-image';
 // Internal
 import Header from '../components/header';
 import Photo from '../components/photo';
+import PhotoRow from '../components/row';
 
 class IndexPage extends React.Component {
 	render() {
@@ -14,6 +15,37 @@ class IndexPage extends React.Component {
 		const username = this.props.data.allWordpressWpMe.edges[0].node.name;
 		const avatar = this.props.data.allWordpressWpMe.edges[0].node.avatar_urls.wordpress_96;
 
+		const displayPhotos = () => {
+			const photoArray = [];
+			let photoRow = [];
+
+			photos.map( photo => {
+				if ( photo.node.featured_media ) {
+					photoArray.push( photo );
+				}
+			} );
+
+			return (
+				photoArray.map( photo => {
+					if ( photoRow.length === 3 ) {
+						photoRow = [];
+					}
+
+					photoRow.push( photo );
+
+					if ( photoRow.length === 3 ) {
+						return returnRow( photoRow );
+					}
+				} )
+			)
+		}
+
+		const returnRow = ( photos ) => {
+			return (
+				<PhotoRow photos={ photos } />
+			)
+		}
+
 		return (
 			<div>
 				<div
@@ -21,36 +53,19 @@ class IndexPage extends React.Component {
 						display: 'flex',
 						flexDirection: 'column',
 						alignItems: 'center',
-						margin: "80px 0",
+						margin: "2em 0",
 					} }
       			>
         			<Header bio={ bio } src={ avatar } username={ username } />
       			</div>
-				<div
+      			<div
 					style={ {
-						
-						/*display: 'flex',
-						gridTemplateColumns: 'repeat(auto-fit, minmax( 300px, 1fr ) )',
-						justifyItems: 'center',
-						gridGap: "20px 20px",
-						*/
 						display: 'flex',
 						flexDirection: 'column',
+						alignItems: 'center',
 					} }
-				>
-					{
-						photos.map( photo => {
-							if ( photo.node.featured_media ) {
-								return (
-									<Photo
-										src={ photo.node.featured_media.localFile.childImageSharp.sizes.src }
-										sizes={ photo.node.featured_media.localFile.childImageSharp.sizes }
-										key={ photo.node.id }
-									/>
-								)
-							} 
-						} )
-					}
+      			>		
+					{ displayPhotos() }
 				</div>
 			</div>
 		)
