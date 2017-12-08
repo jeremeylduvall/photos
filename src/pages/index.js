@@ -21,7 +21,7 @@ class IndexPage extends React.Component {
 						display: 'flex',
 						flexDirection: 'column',
 						alignItems: 'center',
-						margin: "100px 0",
+						margin: "80px 0",
 					} }
       			>
         			<Header bio={ bio } src={ avatar } username={ username } />
@@ -36,8 +36,6 @@ class IndexPage extends React.Component {
 						*/
 						display: 'flex',
 						flexDirection: 'column',
-						
-						
 					} }
 				>
 					{

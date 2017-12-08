@@ -8,32 +8,49 @@ const Header = ( props ) => {
 			style={ {
 				display: 'flex',
 				alignItems: 'center',
-				maxWidth: "100%",
+				maxWidth: "90%",
+				flexWrap: 'wrap',
+				flexGrow: 1,
 			} }
 		>
-			<img
-				src={ props.src }
-				alt={ `Jeremey DuVall` }
+			<span
 				style={ {
-					width: "96px",
-					marginBottom: 0,
-					borderRadius: "50%",
-					marginRight: "20px",
+					display: 'flex',
+					height: '120px',
+					flexGrow: 1,
+					flexBasis: '96px',
+					alignItems: 'center',
+					justifyContent: 'center',
 				} }
-			/>
-			<span>
-			<h3
-				dangerouslySetInnerHTML={ { __html: ( props.username ) } }
+			>
+				<img
+					src={ props.src }
+					alt={ `Jeremey DuVall` }
+					style={ {
+						marginBottom: 0,
+						borderRadius: "50%",
+						width: '96px',
+					} }
+				/>
+			</span>
+			<span
 				style={ {
-					marginBottom: "10px",
+					flexBasis: '500px',
+					flexGrow: 1,
 				} }
-			/>
-			<p
-				style={ {
-					marginBottom: 0,
-				} }
-				dangerouslySetInnerHTML={ { __html: ( '<strong>Jeremey DuVall.</strong> ' + props.bio ) } }
-			/>
+			>
+				<h3
+					dangerouslySetInnerHTML={ { __html: ( props.username ) } }
+					style={ {
+						marginBottom: "10px",
+					} }
+				/>
+				<p
+					style={ {
+						marginBottom: 0,
+					} }
+					dangerouslySetInnerHTML={ { __html: ( '<strong>Jeremey DuVall.</strong> ' + props.bio ) } }
+				/>
 			</span>
 		</div>
 	)
