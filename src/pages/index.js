@@ -1,8 +1,11 @@
+// External
 import React from 'react';
 import Link from 'gatsby-link';
 import Img from 'gatsby-image';
 
-import Header from '../components/header'
+// Internal
+import Header from '../components/header';
+import Photo from '../components/photo';
 
 class IndexPage extends React.Component {
 	render() {
@@ -10,7 +13,6 @@ class IndexPage extends React.Component {
 		const bio = this.props.data.allWordpressWpMe.edges[0].node.description;
 		const username = this.props.data.allWordpressWpMe.edges[0].node.name;
 		const avatar = this.props.data.allWordpressWpMe.edges[0].node.avatar_urls.wordpress_96;
-		console.log( this.props.data );
 
 		return (
 			<div>
@@ -22,15 +24,31 @@ class IndexPage extends React.Component {
 						margin: "100px 0",
 					} }
       			>
-        			<Header bio={ bio } imgSrc={ avatar } username={ username } />
+        			<Header bio={ bio } src={ avatar } username={ username } />
       			</div>
-				<div>
+				<div
+					style={ {
+						
+						/*display: 'flex',
+						gridTemplateColumns: 'repeat(auto-fit, minmax( 300px, 1fr ) )',
+						justifyItems: 'center',
+						gridGap: "20px 20px",
+						*/
+						display: 'flex',
+						flexDirection: 'column',
+						
+						
+					} }
+				>
 					{
 						photos.map( photo => {
 							if ( photo.node.featured_media ) {
-								console.log( photo );
 								return (
-									<Img src={ photo.node.featured_media.localFile.childImageSharp.sizes.src } sizes={ photo.node.featured_media.localFile.childImageSharp.sizes } key={ photo.node.id } />
+									<Photo
+										src={ photo.node.featured_media.localFile.childImageSharp.sizes.src }
+										sizes={ photo.node.featured_media.localFile.childImageSharp.sizes }
+										key={ photo.node.id }
+									/>
 								)
 							} 
 						} )

@@ -4,14 +4,13 @@ import Link from 'gatsby-link'
 import Helmet from 'react-helmet'
 
 import './index.css'
-import Header from '../components/header'
 
 const TemplateWrapper = ({ children }) => (
   <div>
     <div
       style={{
         margin: '0 auto',
-        maxWidth: 960,
+        maxWidth: 1080,
         padding: '0px 1.0875rem 1.45rem',
         paddingTop: 0,
       }}
