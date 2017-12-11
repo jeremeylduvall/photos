@@ -8,19 +8,15 @@ const Header = ( props ) => {
 			style={ {
 				display: 'flex',
 				alignItems: 'center',
-				maxWidth: "90%",
+				justifyContent: 'center',
 				flexWrap: 'wrap',
-				flexGrow: 1,
+				margin: '2em 2em',
 			} }
 		>
 			<span
 				style={ {
-					display: 'flex',
-					height: '120px',
-					flexGrow: 1,
-					flexBasis: '96px',
-					alignItems: 'center',
-					justifyContent: 'center',
+					flexBasis: '120px',
+					height: '96px',
 				} }
 			>
 				<img
@@ -35,20 +31,16 @@ const Header = ( props ) => {
 			</span>
 			<span
 				style={ {
-					flexBasis: '600px',
+					flexBasis: '500px',
 					flexGrow: 1,
 				} }
 			>
 				<h3
 					dangerouslySetInnerHTML={ { __html: ( props.username ) } }
-					style={ {
-						marginBottom: "10px",
-					} }
+					style={ { marginBottom: "0.2em" } }
 				/>
-				<p
-					style={ {
-						marginBottom: 0,
-					} }
+				<p 
+					style={ { marginBottom: 0 } }
 					dangerouslySetInnerHTML={ { __html: ( '<strong>Jeremey DuVall.</strong> ' + props.bio ) } }
 				/>
 			</span>

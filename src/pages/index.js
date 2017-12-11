@@ -8,12 +8,13 @@ import Header from '../components/header';
 import Photo from '../components/photo';
 import PhotoRow from '../components/row';
 
-class IndexPage extends React.Component {
+class IndexPage extends React.Component {	
 	render() {
 		const photos = this.props.data.allWordpressPost.edges;
 		const bio = this.props.data.allWordpressWpMe.edges[0].node.description;
 		const username = this.props.data.allWordpressWpMe.edges[0].node.name;
 		const avatar = this.props.data.allWordpressWpMe.edges[0].node.avatar_urls.wordpress_96;
+
 
 		const displayPhotos = () => {
 			const photoArray = [];
@@ -36,32 +37,23 @@ class IndexPage extends React.Component {
 					count++;
 
 					if ( photoRow.length === 3 ) {
-						return returnRow( photoRow );
+						return returnRow( photoRow, count );
 					} else if ( photoArray.length - count === 0 ) {
-						return returnRow( photoRow );	
+						return returnRow( photoRow, count );	
 					}
 				} )
 			)
 		}
 
-		const returnRow = ( photos ) => {
+		const returnRow = ( photos, count ) => {
 			return (
-				<PhotoRow photos={ photos } key={ Math.random() } />
+				<PhotoRow photos={ photos } key={ count } />
 			)
 		}
 
 		return (
 			<div>
-				<div
-					style={ {
-						display: 'flex',
-						flexDirection: 'column',
-						alignItems: 'center',
-						margin: "2em 0",
-					} }
-      			>
-        			<Header bio={ bio } src={ avatar } username={ username } />
-      			</div>
+    			<Header bio={ bio } src={ avatar } username={ username } />
       			<div
 					style={ {
 						display: 'flex',
@@ -90,7 +82,6 @@ export const pageQuery = graphql`
               				childImageSharp {
 								sizes( maxWidth:500 ) {
 									...GatsbyImageSharpSizes
-
 				                }
 							}
 						}
