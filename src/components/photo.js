@@ -12,9 +12,7 @@ const Photo = ( props ) => {
 				padding: '0.2em',
 			} }
 		>
-			<Link
-				to={ props.link }
-			>
+			<Link to={ props.link } >
 				<Img
 					src={ props.src }
 					sizes={ props.sizes }

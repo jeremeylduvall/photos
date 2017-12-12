@@ -1,6 +1,7 @@
 // External
 import React from 'react';
 import PropTypes from 'prop-types';
+import Link from 'gatsby-link';
 
 const Header = ( props ) => {
 	return (
@@ -35,10 +36,18 @@ const Header = ( props ) => {
 					flexGrow: 1,
 				} }
 			>
-				<h3
-					dangerouslySetInnerHTML={ { __html: ( props.username ) } }
-					style={ { marginBottom: "0.2em" } }
-				/>
+				<Link
+					to='/'
+					activeStyle={ {
+        				textDecoration: 'none',
+        				color: '#000000'	
+      				} }
+				>
+					<h3
+						dangerouslySetInnerHTML={ { __html: ( props.username ) } }
+						style={ { marginBottom: '0.2em' } }
+					/>
+				</Link>
 				<p 
 					style={ { marginBottom: 0 } }
 					dangerouslySetInnerHTML={ { __html: ( '<strong>Jeremey DuVall.</strong> ' + props.bio ) } }
