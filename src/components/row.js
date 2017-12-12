@@ -21,6 +21,7 @@ const PhotoRow = ( props ) => {
 							src={ photo.node.featured_media.localFile.childImageSharp.sizes.src }
 							sizes={ photo.node.featured_media.localFile.childImageSharp.sizes }
 							key={ photo.node.id }
+							link={ photo.node.date + photo.node.slug }
 						/>
 					)
 				} )

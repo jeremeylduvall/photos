@@ -1,5 +1,6 @@
 // External
 import React from 'react';
+import PropTypes from 'prop-types';
 import Link from 'gatsby-link';
 import Img from 'gatsby-image';
 
@@ -70,6 +71,10 @@ class IndexPage extends React.Component {
 
 export default IndexPage;
 
+IndexPage.PropTypes = {
+	data: PropTypes.object
+}
+
 export const pageQuery = graphql`
 	query IndexQuery {
 		allWordpressPost( sort: { fields: [ date ], order: DESC } ) {
@@ -77,6 +82,8 @@ export const pageQuery = graphql`
 				node {
 					id
 					title
+					slug
+					date( formatString: "/YYYY/MM/DD/" )
 					featured_media {
            				localFile {
               				childImageSharp {

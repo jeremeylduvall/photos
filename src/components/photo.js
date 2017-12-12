@@ -2,6 +2,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Img from 'gatsby-image';
+import Link from 'gatsby-link';
 
 const Photo = ( props ) => {
 	return (
@@ -11,14 +12,18 @@ const Photo = ( props ) => {
 				padding: '0.2em',
 			} }
 		>
-			<Img
-				src={ props.src }
-				sizes={ props.sizes }
-				style={ {
-					width: 'auto',
-					height: 'auto',
-				} }
-			/>
+			<Link
+				to={ props.link }
+			>
+				<Img
+					src={ props.src }
+					sizes={ props.sizes }
+					style={ {
+						width: 'auto',
+						height: 'auto',
+					} }
+				/>
+			</Link>
 		</div>
 	)
 }
@@ -26,6 +31,7 @@ const Photo = ( props ) => {
 Photo.PropTypes = {
 	src: PropTypes.string,
 	sizes: PropTypes.object,
+	link: PropTypes.string,
 }
 
 export default Photo;

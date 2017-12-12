@@ -12,6 +12,7 @@ exports.createPages = ( { graphql, boundActionCreators } ) => {
 					allWordpressPost {
 						edges {
 							node {
+								date( formatString: "YYYY/MM/DD/" )
 								id
 								slug
 						  	}
@@ -28,7 +29,7 @@ exports.createPages = ( { graphql, boundActionCreators } ) => {
 			const template = path.resolve(`./src/templates/single-photo.js`);
 			_.each( result.data.allWordpressPost.edges, edge => {
 				createPage( {
-					path: edge.node.slug,
+					path: edge.node.date + edge.node.slug,
 					component: slash( template ),
 					context: {
 						slug: edge.node.slug
