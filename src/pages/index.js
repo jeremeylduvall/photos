@@ -89,7 +89,7 @@ export const pageQuery = graphql`
               				childImageSharp {
 								sizes( maxWidth: 1000 ) {
 									...GatsbyImageSharpSizes
-				                }
+								}
 							}
 						}
 					}
